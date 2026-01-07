@@ -1,9 +1,16 @@
+Voici ton code nettoyé et optimisé. J'ai supprimé toutes les répétitions inutiles et les anciennes tentatives de mise en page qui se contredisaient.
+
+J'ai gardé la méthode "Zéro Conflit" qui est celle qui fonctionnait pour toi, tout en ajustant l'espace entre le descriptif et le lecteur pour qu'il n'y ait plus de vide inutile.
+
+Remplace tout le contenu de ton fichier assets/css/main.scss par celui-ci :
+CSS
+
 ---
 ---
 
 @import "base", "background", "header", "sidebar", "home", "post", "archive", "player";
 
-/* --- DESIGN L'ÉCHO DES SONGES --- */
+/* --- DESIGN GLOBAL : L'ÉCHO DES SONGES --- */
 
 body {
     background-color: #0b0e14 !important;
@@ -13,362 +20,75 @@ body {
 #sidebar {
     background-color: #161b22 !important;
     border: 1px solid rgba(0, 212, 255, 0.4) !important;
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); /* Ombre fixe pour tester */
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
 }
 
-.wave {
-    display: none !important;
-}
 /* --- SUPPRESSION DÉFINITIVE DE LA VAGUE --- */
-.wave, .waves, #wave, #waves, .header-wave, .footer-wave {
+.wave, .waves, #wave, #waves, .header-wave, .footer-wave, #header::after, #header::before {
     display: none !important;
     background-image: none !important;
     visibility: hidden !important;
     height: 0 !important;
 }
 
-/* On retire aussi l'éventuel fond de couleur qui simule une vague */
-#header::after, #header::before {
-    display: none !important;
-}
-/* HALO AUTOUR DES VIGNETTES (POSTS) */
-.post {
-    background: #161b22 !important; /* Fond légèrement plus clair que le noir pur */
-    border: 1px solid rgba(0, 212, 255, 0.3) !important; /* Bordure bleue fine */
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2) !important; /* Halo bleu doux */
-    border-radius: 12px !important; /* Arrondi des angles de la vignette */
-    padding: 15px !important;
-    margin-bottom: 30px !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden; /* Pour que rien ne dépasse de la vignette */
-}
-
-/* EFFET AU SURVOL : La vignette s'illumine quand on passe la souris */
-.post:hover {
-    transform: translateY(-5px); /* Petit soulèvement */
-    box-shadow: 0 0 35px rgba(0, 212, 255, 0.5) !important; /* Halo plus intense */
-    border: 1px solid #00d4ff !important;
-}
-
-/* ON NETTOIE LE LECTEUR À L'INTÉRIEUR */
-.player-container, audio {
-    box-shadow: none !important; /* On enlève le halo interne pour ne garder que l'externe */
-    border: none !important;
-    background: transparent !important;
-    width: 100% !important;
-}
-/* TITRES ET TEXTES DES VIGNETTES */
-.post h2, .post h2 a {
-    color: #cfd8dc !important; /* Gris clair bleuté très propre */
-    text-decoration: none !important;
-    transition: color 0.3s ease;
-}
-
-/* Couleur au survol des titres (pour le rappel néon) */
-.post h2 a:hover {
-    color: #00d4ff !important; 
-}
-
-/* EXTRAIT DE TEXTE (EXCERPT) */
-.post p, .post .excerpt, .post .short-excerpt, .post .long-excerpt {
-    color: #90a4ae !important; /* Gris un peu plus foncé pour le texte de description */
-    font-size: 0.95rem;
-}
-
-/* INFOS (DATE, ETC) */
-.post .info, .post .date {
-    color: #607d8b !important; /* Gris plus sombre pour les infos secondaires */
-}
-.post {
-    height: auto !important; /* Force la vignette à s'agrandir selon le contenu */
-    min-height: 300px;        /* Sécurité pour garder une belle forme */
-    display: flex;
-    flex-direction: column;   /* Aligne les éléments verticalement */
-}
-
-.post img {
-    width: 100% !important;   /* L'image prend toute la largeur */
-    height: auto !important;  /* L'image garde ses proportions sans être écrasée */
-    max-height: 200px;        /* Empêche l'image de devenir géante */
-    object-fit: contain;        /* Remplit bien le cadre proprement */
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-/* On s'assure que le lecteur audio reste bien en bas sans masquer l'image */
-.player-container {
-    margin-top: auto;         /* Pousse le lecteur vers le bas de la vignette */
-    padding-top: 10px;
-}
-/* RÉORGANISATION DE LA VIGNETTE : TEXTE À GAUCHE, IMAGE À DROITE */
-.post {
-    display: flex !important;
-    flex-direction: row-reverse !important; /* Met l'image à droite et le texte à gauche */
-    align-items: center !important;        /* Aligne tout verticalement au centre */
-    justify-content: space-between !important;
-    padding: 20px !important;
-    height: auto !important;
-    min-height: 220px !important;
-}
-
-/* LE CONTENEUR DU TEXTE (Titre + Description) */
-.post .title, .post .excerpt-container {
-    flex: 1 !important;          /* Prend tout l'espace restant à gauche */
-    padding-right: 20px !important;
-    text-align: left !important;
-}
-
-/* L'IMAGE À DROITE */
-.post img {
-    width: 150px !important;     /* Taille fixe pour l'image pour qu'elle ne prenne pas trop de place */
-    height: 150px !important;
-    object-fit: contain !important;
-    background-color: transparent !important;
-    margin: 0 !important;        /* Enlève les marges qui pourraient décaler */
-    flex-shrink: 0 !important;   /* Empêche l'image de rétrécir */
-}
-
-/* AJUSTEMENT DU LECTEUR AUDIO */
-/* S'il est dans le flux, on le force à prendre toute la largeur en dessous ou à rester sous le texte */
-.player-container {
-    width: 100% !important;
-    margin-top: 15px !important;
-}
-/* VIGNETTE : IMAGE À GAUCHE | TEXTE À DROITE */
-.post {
-    display: flex !important;
-    flex-wrap: wrap !important;      /* Permet au lecteur de passer en dessous */
-    flex-direction: row !important;  /* Image à gauche, texte à droite */
-    align-items: flex-start !important; 
-    justify-content: flex-start !important;
-    padding: 20px !important;
-    height: auto !important;
-}
-
-/* L'IMAGE À GAUCHE */
-.post img {
-    width: 150px !important; 
-    height: 150px !important;
-    object-fit: contain !important;
-    flex-shrink: 0 !important;
-    margin-right: 25px !important;   /* Espace entre l'image et le texte */
-    margin-bottom: 0 !important;
-}
-
-/* LE BLOC TEXTE À DROITE (Titre + Description) */
-.post .title, .post .excerpt-container, .post .content-right {
-    flex: 1 !important;              /* Prend tout le reste de la place */
-    min-width: 200px !important;     /* Sécurité pour ne pas être trop écrasé */
-    text-align: left !important;
-}
-
-/* LE LECTEUR AUDIO EN DESSOUS */
-.player-container {
-    width: 100% !important;          /* Prend toute la largeur de la vignette */
-    margin-top: 20px !important;     /* Espace avec le bloc du dessus */
-    flex-basis: 100% !important;     /* Force le retour à la ligne */
-}
-/* RÉPARATIONS FINALES DES COLLISIONS */
-.post {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    height: auto !important; /* On laisse la vignette grandir selon le contenu */
-    padding: 25px !important;
-    overflow: visible !important; /* Empêche de couper ce qui dépasse */
-}
-
-/* On protège l'image */
-.post img {
-    max-width: 150px !important;
-    height: auto !important;
-    margin-bottom: 20px !important; /* Espace pour ne pas toucher le lecteur */
-    object-fit: contain !important;
-}
-
-/* On protège le bloc texte */
-.post .title, .post .excerpt-container {
-    margin-bottom: 20px !important;
-}
-
-/* ON RÉPARE LE LECTEUR AUDIO */
-.player-container, audio {
-    flex-basis: 100% !important; /* Force le lecteur à prendre sa propre ligne */
-    width: 100% !important;
-    margin-top: 10px !important;
-    margin-left: 0 !important;   /* Aligne bien à gauche */
-    clear: both !important;      /* Interdit tout élément sur ses côtés */
-}
-/* --- RÉPARATION ULTIME : DISPOSITION EN GRILLE --- */
-.post {
-    display: grid !important;
-    /* On crée 2 colonnes (Image à gauche, Texte à droite) et 2 lignes (Haut et Lecteur) */
-    grid-template-columns: 150px 1fr !important; 
-    grid-template-rows: auto auto !important;
-    gap: 20px !important;
-    height: auto !important;
-    padding: 25px !important;
-    box-sizing: border-box !important; /* Force le calcul interne pour ne pas déborder */
-}
-
-/* L'IMAGE (Ligne 1, Colonne 1) */
-.post img {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-    width: 150px !important;
-    height: 150px !important;
-    object-fit: contain !important;
-    margin: 0 !important;
-}
-
-/* LE TEXTE (Ligne 1, Colonne 2) */
-.post .title, .post .excerpt-container, .post .content-right {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    margin: 0 !important;
-    overflow-wrap: break-word !important; /* Empêche le texte de pousser la barre à droite */
-}
-
-/* LE LECTEUR AUDIO (Ligne 2, prend TOUTE la largeur) */
-.player-container, audio, .audio-player {
-    grid-column: 1 / span 2 !important; /* S'étale sur les 2 colonnes */
-    grid-row: 2 !important;
-    width: 100% !important;
-    max-width: 100% !important; /* Empêche strictement de dépasser à droite */
-    margin-top: 10px !important;
-    box-sizing: border-box !important;
-}
-/* FORCE LE TEXTE À S'AFFICHER À DROITE DE L'IMAGE */
-.post {
-    display: grid !important;
-    grid-template-columns: 150px 1fr !important; 
-    gap: 20px !important;
-}
-
-/* On cible tout ce qui n'est pas l'image et pas le lecteur pour le mettre à droite */
-.post h2, 
-.post p, 
-.post .excerpt, 
-.post .post-content {
-    grid-column: 2 !important; /* Tout à droite */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* Petit ajustement pour que le titre soit bien au-dessus du texte */
-.post h2 {
-    margin-bottom: 10px !important;
-}
-
-.post p {
-    margin-top: 0 !important;
-    line-height: 1.4 !important;
-}
-/* RE-DISPOSITION DE LA GRILLE POUR TOUT AFFICHER */
-.post {
-    display: grid !important;
-    grid-template-columns: 150px 1fr !important; /* Image à gauche (150px), reste à droite */
-    grid-template-areas: 
-        "thumb content"
-        "player player" !important;
-    gap: 15px 25px !important;
-    height: auto !important;
-}
-
-/* L'IMAGE (Zone "thumb") */
-.post img {
-    grid-area: thumb !important;
-    width: 150px !important;
-    height: 150px !important;
-    object-fit: contain !important;
-}
-
-/* LE CONTENU DE DROITE (Zone "content") */
-/* On cible le lien du titre et les paragraphes */
-.post h2, .post p, .post .excerpt {
-    grid-column: 2 !important; 
-    grid-row: 1 !important;
-    display: block !important;
-}
-
-/* On décale le texte sous le titre pour qu'ils ne se chevauchent pas */
-.post h2 {
-    margin-top: 0 !important;
-    margin-bottom: 50px !important; /* Crée l'espace pour le texte en dessous */
-}
-
-.post p, .post .excerpt {
-    margin-top: 45px !important; /* Le texte vient se loger sous le titre */
-    color: #90a4ae !important;
-}
-
-/* LE LECTEUR (Zone "player") */
-.player-container, audio {
-    grid-area: player !important;
-    width: 100% !important;
-}
-/* FORCE LE TITRE ET LE TEXTE À RESTER ENSEMBLE À DROITE */
-.post h2, .post p, .post .excerpt {
-    grid-column: 2 !important; /* Toujours dans la colonne de droite */
-    grid-row: 1 !important;    /* Toujours sur la première ligne (au-dessus du lecteur) */
-    display: block !important;
-}
-
-/* On ajuste les marges pour qu'ils ne se chevauchent pas entre eux */
-.post h2 {
-    margin-top: 0 !important;
-    margin-bottom: 10px !important;
-    padding-bottom: 0 !important;
-}
-
-.post p, .post .excerpt {
-    /* On utilise padding-top au lieu de margin pour mieux contrôler l'espace */
-    padding-top: 40px !important; 
-    margin: 0 !important;
-    z-index: 2; /* S'assure qu'il passe devant d'éventuels résidus de décor */
-}
-
-/* ON RE-VERROUILLE LE LECTEUR TOUT EN BAS */
-.player-container, audio {
-    grid-column: 1 / span 2 !important; /* Prend toute la largeur */
-    grid-row: 2 !important;            /* Force le passage à la ligne 2 */
-    margin-top: 15px !important;       /* Espace de sécurité */
-}
-/* --- CONFIGURATION "ZÉRO CONFLIT" --- */
+/* --- STRUCTURE DES VIGNETTES (POSTS) --- */
 .post {
     position: relative !important;
-    display: block !important; /* On sort du mode Grid qui semble bloquer */
+    display: block !important;
+    background: #161b22 !important;
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2) !important;
+    border-radius: 12px !important;
     padding: 20px !important;
-    padding-bottom: 80px !important; /* On laisse de la place en bas pour le lecteur */
-    min-height: 200px !important;
+    padding-bottom: 70px !important; /* Espace réservé pour le lecteur en bas */
+    margin-bottom: 30px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: auto !important;
     overflow: hidden !important;
 }
 
-/* L'IMAGE À GAUCHE */
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(0, 212, 255, 0.5) !important;
+    border: 1px solid #00d4ff !important;
+}
+
+/* --- IMAGE À GAUCHE --- */
 .post img {
     float: left !important;
     width: 150px !important;
     height: 150px !important;
     object-fit: contain !important;
-    margin-right: 20px !important;
+    border-radius: 8px;
+    margin-right: 25px !important;
     margin-bottom: 10px !important;
 }
 
-/* LE BLOC TEXTE (TITRE + DESCRIPTION) */
-.post h2, .post p, .post .excerpt {
+/* --- TEXTES (TITRE ET DESCRIPTION) À DROITE --- */
+.post h2, .post h2 a {
+    color: #cfd8dc !important;
+    text-decoration: none !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
     display: block !important;
-    margin-left: 170px !important; /* On décale le texte pour ne pas chevaucher l'image */
+}
+
+.post h2 a:hover {
+    color: #00d4ff !important; 
+}
+
+/* On utilise 'overflow: hidden' pour que le texte reste en colonne à droite de l'image */
+.post p, .post .excerpt, .post .post-content {
+    display: block !important;
+    overflow: hidden !important;
+    color: #90a4ae !important;
+    font-size: 0.95rem;
+    line-height: 1.4 !important;
     text-align: left !important;
     visibility: visible !important;
 }
 
-.post h2 {
-    margin-top: 0 !important;
-    margin-bottom: 10px !important;
-}
-
-/* LE LECTEUR AUDIO FORCÉ EN BAS */
+/* --- LECTEUR AUDIO FORCÉ EN BAS --- */
 .player-container, audio {
     position: absolute !important;
     bottom: 15px !important;
@@ -376,4 +96,14 @@ body {
     right: 20px !important;
     width: calc(100% - 40px) !important;
     margin: 0 !important;
+    clear: both !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* --- INFOS SECONDAIRES (DATE) --- */
+.post .info, .post .date {
+    color: #607d8b !important;
+    font-size: 0.8rem;
 }
