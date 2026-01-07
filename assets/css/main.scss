@@ -79,3 +79,24 @@ body {
 .post .info, .post .date {
     color: #607d8b !important; /* Gris plus sombre pour les infos secondaires */
 }
+.post {
+    height: auto !important; /* Force la vignette à s'agrandir selon le contenu */
+    min-height: 300px;        /* Sécurité pour garder une belle forme */
+    display: flex;
+    flex-direction: column;   /* Aligne les éléments verticalement */
+}
+
+.post img {
+    width: 100% !important;   /* L'image prend toute la largeur */
+    height: auto !important;  /* L'image garde ses proportions sans être écrasée */
+    max-height: 200px;        /* Empêche l'image de devenir géante */
+    object-fit: cover;        /* Remplit bien le cadre proprement */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* On s'assure que le lecteur audio reste bien en bas sans masquer l'image */
+.player-container {
+    margin-top: auto;         /* Pousse le lecteur vers le bas de la vignette */
+    padding-top: 10px;
+}
