@@ -57,3 +57,25 @@ body {
     background: transparent !important;
     width: 100% !important;
 }
+/* TITRES ET TEXTES DES VIGNETTES */
+.post h2, .post h2 a {
+    color: #cfd8dc !important; /* Gris clair bleuté très propre */
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+}
+
+/* Couleur au survol des titres (pour le rappel néon) */
+.post h2 a:hover {
+    color: #00d4ff !important; 
+}
+
+/* EXTRAIT DE TEXTE (EXCERPT) */
+.post p, .post .excerpt, .post .short-excerpt, .post .long-excerpt {
+    color: #90a4ae !important; /* Gris un peu plus foncé pour le texte de description */
+    font-size: 0.95rem;
+}
+
+/* INFOS (DATE, ETC) */
+.post .info, .post .date {
+    color: #607d8b !important; /* Gris plus sombre pour les infos secondaires */
+}
