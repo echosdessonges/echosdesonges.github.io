@@ -134,3 +134,37 @@ body {
     width: 100% !important;
     margin-top: 15px !important;
 }
+/* VIGNETTE : IMAGE À GAUCHE | TEXTE À DROITE */
+.post {
+    display: flex !important;
+    flex-wrap: wrap !important;      /* Permet au lecteur de passer en dessous */
+    flex-direction: row !important;  /* Image à gauche, texte à droite */
+    align-items: flex-start !important; 
+    justify-content: flex-start !important;
+    padding: 20px !important;
+    height: auto !important;
+}
+
+/* L'IMAGE À GAUCHE */
+.post img {
+    width: 150px !important; 
+    height: 150px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+    margin-right: 25px !important;   /* Espace entre l'image et le texte */
+    margin-bottom: 0 !important;
+}
+
+/* LE BLOC TEXTE À DROITE (Titre + Description) */
+.post .title, .post .excerpt-container, .post .content-right {
+    flex: 1 !important;              /* Prend tout le reste de la place */
+    min-width: 200px !important;     /* Sécurité pour ne pas être trop écrasé */
+    text-align: left !important;
+}
+
+/* LE LECTEUR AUDIO EN DESSOUS */
+.player-container {
+    width: 100% !important;          /* Prend toute la largeur de la vignette */
+    margin-top: 20px !important;     /* Espace avec le bloc du dessus */
+    flex-basis: 100% !important;     /* Force le retour à la ligne */
+}
