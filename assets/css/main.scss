@@ -3,49 +3,19 @@
 
 @import "base", "background", "header", "sidebar", "home", "post", "archive", "player";
 
-/* --- AMBIANCE ABYSSES : L'ÉCHO DES SONGES --- */
+/* --- DESIGN L'ÉCHO DES SONGES --- */
 
-/* 1. Force le fond noir sur TOUTE la page */
-html, body {
+body {
     background-color: #0b0e14 !important;
     color: #cfd8dc !important;
-    font-family: 'Georgia', serif;
 }
 
-/* 2. Supprime radicalement la vague (sous toutes ses formes) */
-.wave, #wave, [class*="wave"] {
-    display: none !important;
-    background: none !important;
-    visibility: hidden !important;
-}
-
-/* 3. Animation de l'ombre pulsante bleue */
-@keyframes pulseBlue {
-    0% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.3); }
-    50% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.7); }
-    100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.3); }
-}
-
-/* 4. Application à la Sidebar (Menu de droite) */
 #sidebar {
     background-color: #161b22 !important;
     border: 1px solid rgba(0, 212, 255, 0.4) !important;
-    animation: pulseBlue 4s infinite ease-in-out !important;
-    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); /* Ombre fixe pour tester */
 }
 
-/* 5. Style des textes et liens */
-#info h3 {
-    color: #ffffff !important;
-    letter-spacing: 2px;
-}
-
-a, .post-link {
-    color: #4fc3f7 !important;
-}
-
-/* 6. Préparation pour le futur lecteur audio */
-.audio-player, audio, .player {
-    animation: pulseBlue 4s infinite ease-in-out !important;
-    border-radius: 30px !important;
+.wave {
+    display: none !important;
 }
