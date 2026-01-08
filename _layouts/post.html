@@ -3,19 +3,17 @@ layout: default
 ---
 
 <style>
-  /* On neutralise tout comportement de "barre fixée en bas" */
   .player-container {
     position: relative !important;
     bottom: auto !important;
     left: auto !important;
     width: 100% !important;
     max-width: 500px !important;
-    margin: 20px 0 !important;
+    margin: 20px auto !important; /* Le "auto" ici va la centrer horizontalement */
     z-index: 1 !important;
     display: block !important;
     transform: none !important;
   }
-
   /* On s'assure que le cadre de l'article ne laisse rien sortir */
   .single-post {
     display: block !important;
