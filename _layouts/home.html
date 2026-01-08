@@ -17,18 +17,6 @@ layout: default
     <div class = title>
         <h2 id = "post-title"><a href="{{ post.url  | absolute_url }}">{{ post.title }}</a></h2>
 
-        <div class = "info">
-            <span>
-              {% if site.data.settings.translate-date == true %}
-                <i class="far fa-calendar" aria-hidden="true"></i>{%- include date.html date=post.date -%}<span> - </span><i class="far fa-clock"></i> {{post.length}}
-              {% else %}
-                <i class="far fa-calendar" aria-hidden="true"></i>{{ post.date | date_to_long_string}}<span> - </span><i class="far fa-clock"></i> {{post.length}}
-              {% endif %}
-            </span>
-        </div>
-    </div>
-
-
     {% capture file %}
         {{- post.file -}}
     {% endcapture %}
