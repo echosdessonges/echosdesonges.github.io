@@ -3,22 +3,23 @@ layout: default
 ---
 
 <style>
-  /* On dit juste au lecteur de ne pas sortir des limites */
+  /* On neutralise tout comportement de "barre fixée en bas" */
   .player-container {
-    max-width: 500px;
-    margin: 20px 0;
-    clear: both; 
-    display: block;
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    margin: 20px 0 !important;
+    z-index: 1 !important;
+    display: block !important;
+    transform: none !important;
   }
 
-  /* "overflow: auto" empêche la barre de passer sous le cadre */
+  /* On s'assure que le cadre de l'article ne laisse rien sortir */
   .single-post {
-    overflow: auto;
-  }
-
-  .single-post img {
-    max-width: 100%;
-    height: auto;
+    display: block !important;
+    overflow: visible !important;
   }
 </style>
 
