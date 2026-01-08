@@ -144,16 +144,8 @@ body {
     font-weight: normal;
     font-style: normal;
 }
-
-/* 2. Application au titre */
 .site-title {
-    font-family: 'ZombieHunger', fantasy !important; /* !important force l'affichage */
-    font-size: 32px;
-    color: #cc0000;
-    text-align: center;
-    margin-bottom: 10px;
-    display: block;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    display: none;
 }
 
 .sidebar-logo {
