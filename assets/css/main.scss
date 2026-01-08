@@ -169,9 +169,9 @@ body {
 }
 /* 1. L'animation (on reste sur du blanc/gris pour respecter tes couleurs) */
 @keyframes pulse {
-  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
-  50% { box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.6); }
-  100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+  0% { box-shadow: 0 0 3px rgba(255, 255, 255, 0.2); }
+  50% { box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.6); }
+  100% { box-shadow: 0 0 3px rgba(255, 255, 255, 0.2); }
 }
 
 /* 2. On l'applique à la sidebar (le bloc qui contient ton logo et ta description) */
@@ -190,6 +190,6 @@ body {
 
 /* 4. Effet bonus sur ton nouveau logo micro.jpg */
 .sidebar-logo {
-  animation: pulse 5s infinite ease-in-out !important;
+  animation: pulse 4s infinite ease-in-out !important;
   border-radius: 50%; /* Si ton logo est rond, le halo sera rond */
 }
