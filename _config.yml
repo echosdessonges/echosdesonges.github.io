@@ -2,12 +2,12 @@
 title: "Horror Comedy Talk"
 description: "Les interviews des objets stars du cinéma"
 podcast-description: "Les interviews des objets stars du cinéma"
-url: "https://https://horrorcomedytalk.github.io/"
+url: "https://horrorcomedytalk.github.io"
 baseurl: ""
 author:
   name: "Le Moine Lunaire"
   email: ""
-  url: "https://Les interviews des objets stars du cinéma"
+  url: "https://horrorcomedytalk.github.io"
 permalink: pretty
 keywords: [podcast, sons, meditation, espace, abysses, mystere]
 
