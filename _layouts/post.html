@@ -3,22 +3,28 @@ layout: default
 ---
 
 <style>
+  /* On dit juste au lecteur de ne pas sortir des limites */
   .player-container {
-    max-width: 500px; 
-    margin: 20px 0;   
-    clear: both;      /* Force le lecteur à rester sous les éléments précédents */
-    display: block;   /* S'assure qu'il prend sa propre place */
+    max-width: 500px;
+    margin: 20px 0;
+    clear: both; 
+    display: block;
   }
+
+  /* "overflow: auto" empêche la barre de passer sous le cadre */
+  .single-post {
+    overflow: auto;
+  }
+
   .single-post img {
-    max-width: 100%;  /* Évite que l'image ne dépasse du cadre */
+    max-width: 100%;
     height: auto;
   }
 </style>
 
 <div class="single-post">
     <div class="categories">
-        {% assign categories = page.categories %}
-        {% for category in categories %}
+        {% for category in page.categories %}
           <a href="{{ '/cat/#' | append: (category | slugify) | absolute_url }}">{{category}}</a>
           {% unless forloop.last %}&nbsp;{% endunless %} 
         {% endfor %}
@@ -27,23 +33,21 @@ layout: default
     <h2>{{page.title}}</h2>
 
     {% if page.cover %}
-        <img src="{{ page.cover | absolute_url }}" alt="Podcast Cover">
+        <img src="{{ page.cover | absolute_url }}" alt="Cover">
     {% else %}
-        <img src="{{ '/assets/img/Podcast_Cover_500.jpg' | absolute_url }}" alt="Podcast Cover">
+        <img src="{{ '/assets/img/Podcast_Cover_500.jpg' | absolute_url }}" alt="Cover">
     {% endif %}
 
     {% capture file %}{{- page.file -}}{% endcapture %}
     {% capture title %}{{- page.title -}}{% endcapture %}
-
+    
     {% include player.html file=file title=title %}
 
     {% if page.videoid %}
         {% include video.html videoid = page.videoid %}
     {% endif %}
 
-    <div class="post-content">
-        {{ content }}
-    </div>
+    {{ content }}
 </div>
 
 {% if site.settings.disqus-shortname %}
