@@ -3,10 +3,9 @@ layout: default
 ---
 {% for post in paginator.posts %}
 
-
 <div class="post">
 
-    <div class = "cover-img">
+    <div class="cover-img">
       {% if post.cover %}
         <img src="{{post.cover}}" alt="Podcast Cover">
       {% else %}
@@ -14,10 +13,9 @@ layout: default
       {% endif %}
     </div>
 
-    <div class = title>
-        <h2 id = "post-title"><a href="{{ post.url  | absolute_url }}">{{ post.title }}</a></h2>
-
-    {% capture file %}
+    <div class="title">
+        <h2 id="post-title"><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h2>
+    </div> {% capture file %}
         {{- post.file -}}
     {% endcapture %}
     {% capture title %}
@@ -25,44 +23,42 @@ layout: default
     {% endcapture %}
     {% include player.html file=file title=title %}
 
-    <div class = "long-excerpt">
+    <div class="long-excerpt">
         <p>
             {% if post.description %}
                 {{post.description | strip_html | truncatewords:100}}
             {% else %}
                 {{ post.content | strip_html | truncatewords:100 }}
             {% endif %}
-            <span class = "continue-reading"><a href="{{ post.url | absolute_url }}">Continue</a></span> 
+            <span class="continue-reading"><a href="{{ post.url | absolute_url }}">Continue</a></span> 
         </p> 
     </div>
 
-    <div class = "short-excerpt">
+    <div class="short-excerpt">
         <p>
             {% if post.description %}
                 {{post.description | strip_html | truncatewords:30}}
             {% else %}
                 {{ post.content | strip_html | truncatewords:30 }}
             {% endif %}
-            <span class = "continue-reading"><a href="{{ post.url | absolute_url }}">Continue</a></span> 
+            <span class="continue-reading"><a href="{{ post.url | absolute_url }}">Continue</a></span> 
         </p> 
     </div>
 
 </div>
 {% endfor %}
 
-
-<!-- Pagination links -->
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
   {% else %}
-    <span class = "inactive">&laquo; Prev</span>
+    <span class="inactive">&laquo; Prev</span>
   {% endif %}
 
   {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
-      <span class = "inactive">{{ page }}</span>
+      <span class="inactive">{{ page }}</span>
     {% elsif page == 1 %}
       <a href="/">{{ page }}</a>
     {% else %}
@@ -73,7 +69,7 @@ layout: default
   {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
   {% else %}
-    <span class = "inactive">Next &raquo;</span>
+    <span class="inactive">Next &raquo;</span>
   {% endif %}
 </div>
 {% endif %}
